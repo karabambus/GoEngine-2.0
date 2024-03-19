@@ -151,11 +151,17 @@ void Board::setBoard(Board &_board)
 	boardSize = _board.boardSize;
 }
 
-void Board::setStone(std::pair<int, int>& position, HumanPlayer player)
+void Board::setLibrary(std::vector<Library>& _library)
+{
+	library = _library;
+}
+
+bool Board::setStone(std::pair<int, int>& position, HumanPlayer player)
 {
 	position.first = pow(2, position.first);
 	lastMove = position;
 	player.isWhite() ? library[position.second].whiteStones |= position.first : library[position.second].blackStones |= position.first;
+	return true;
 }
 
 std::string Board::printBoard()

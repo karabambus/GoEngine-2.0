@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Board.h"
 #include "MoveCommand.h"
+#include "LibraryLoader.h"
 #include <iostream>
 int main()
 {
@@ -9,8 +10,24 @@ int main()
 	HumanPlayer player;
 	HumanPlayer player2;
 	player2.changeColor();
+	std::string path = "testBoard.txt";
+	LibraryLoader ll(path);
+	std::vector<Library> l = ll.getBoardLibrary();
+	/*for (auto& i : l)
+	{
+		std::cout << i.blackStones << std::endl;
+	}*/
+	/*board.setLibrary(l);
+	board.updateLiberties();*/
+
+	for (size_t i = 0; i < ll.getBoardLibrary().size(); i++)
+	{
+		std::cout << ll.getBoardLibrary()[i].blackStones << std::endl;
+	}
+
+	std::cout << board.printBoard() << std::endl;
 	
-	while (true)
+	/*while (true)
 	{
 		int row;
 		std::cout << "Enter column: ";
@@ -42,7 +59,7 @@ int main()
 		moveP2.execute(board);
 		std::cout << board.printBoard() << std::endl;
 		CurrentPlayer::getCurrentPlayer().flipTracker();
-	}
+	}*/
 
 
 }

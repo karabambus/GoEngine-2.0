@@ -12,10 +12,11 @@ public:
 	void clearBoard();
 	bool updateBoard();
 	void setBoard(Board &_board);
-	void setStone(std::pair<int, int>& position, HumanPlayer player);
+	void setLibrary(std::vector<Library>& _library);
+	bool setStone(std::pair<int, int>& position, HumanPlayer player);
 	std::string printBoard();
-private:
 	void updateLiberties();
+private:
 	std::vector<Library> library;
 	short int boardSize;
 	std::pair<int, int> lastMove;

@@ -128,14 +128,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
+    <ClCompile Include="LibraryLoader.cpp" />
     <ClCompile Include="CurrentPlayer.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="HumanPlayer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MoveCommand.cpp" />
+    <ClCompile Include="SetCommand.cpp" />
+    <ClCompile Include="SetStoneCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
+    <ClInclude Include="LibraryLoader.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandHistory.h" />
     <ClInclude Include="CurrentPlayer.h" />
@@ -144,6 +148,10 @@
     <ClInclude Include="Library.h" />
     <ClInclude Include="MoveCommand.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="SetStoneCommand.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="testBoard.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

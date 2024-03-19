@@ -19,12 +19,7 @@ bool MoveCommand::execute(Board& board)
     return board.updateBoard();
 }
 
-bool MoveCommand::undo(Board& board)
-{
-    return false;
-}
-
-bool MoveCommand::undoByPosition(std::pair<int, int>& position)
+bool MoveCommand::undo()
 {
     return false;
 }
