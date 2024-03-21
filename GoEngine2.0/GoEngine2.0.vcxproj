@@ -128,7 +128,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
-    <ClCompile Include="LibraryLoader.cpp" />
+    <ClCompile Include="CommandHistory.cpp" />
+    <ClCompile Include="LibraryManager.cpp" />
     <ClCompile Include="CurrentPlayer.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="HumanPlayer.cpp" />

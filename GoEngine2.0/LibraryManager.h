@@ -2,10 +2,12 @@
 #include "Library.h"
 #include <fstream>
 #include <vector>
+#include <filesystem>
+
 class LibraryManager
 {
 public:
-	void loadLibrary(std::string& _path);
+	void loadLibrary(std::string& loadPath);
 	void saveLibrary(std::vector<Library>& _boardLibrary);
 	~LibraryManager();
 	std::vector<Library> getBoardLibrary();
@@ -13,5 +15,5 @@ public:
 private:
 	//unsigned int boardSize;
 	std::vector<Library> boardLibrary;
-	std::string path;
+	std::string savePath;
 };

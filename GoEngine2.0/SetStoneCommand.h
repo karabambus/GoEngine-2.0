@@ -6,7 +6,7 @@ public:
 	SetStoneCommand(std::pair<int, int> _position, HumanPlayer _player);
 	~SetStoneCommand();
 	bool execute(Board& board) override;
-	bool undo() override;
+	bool undo(Board& board) override;
 private:
 	std::pair<int, int> position;
 	HumanPlayer player;

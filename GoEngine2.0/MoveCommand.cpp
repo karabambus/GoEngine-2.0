@@ -1,6 +1,7 @@
 #include "MoveCommand.h"
 #include "Board.h"
 #include "Command.h"
+#include "CommandHistory.h"
 
 MoveCommand::MoveCommand(HumanPlayer& _player, std::pair<int, int>& _position)
 {
@@ -19,8 +20,10 @@ bool MoveCommand::execute(Board& board)
     return board.updateBoard();
 }
 
-bool MoveCommand::undo()
+bool MoveCommand::undo(Board& board)
 {
+    board = CommandHistory::getCommandHistory().getPrevBoard();
+
     return false;
 }
 

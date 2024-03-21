@@ -2,7 +2,7 @@
 #include "Game.h"
 #include "Board.h"
 #include "MoveCommand.h"
-#include "LibraryLoader.h"
+#include "LibraryManager.h"
 #include <iostream>
 int main()
 {
@@ -11,8 +11,9 @@ int main()
 	HumanPlayer player2;
 	player2.changeColor();
 	std::string path = "testBoard.txt";
-	LibraryManager ll(path);
-	std::vector<Library> l = ll.getBoardLibrary();
+	LibraryManager lm;
+	lm.loadLibrary(path);
+	std::vector<Library> l = lm.getBoardLibrary();
 	/*for (auto& i : l)
 	{
 		std::cout << i.blackStones << std::endl;

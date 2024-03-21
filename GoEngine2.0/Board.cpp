@@ -1,8 +1,6 @@
 #include "Board.h"
 #include "CurrentPlayer.h"
-
-//Board::Board(){}
-
+//TODO: optimize vectors
 Board::Board(int _boardSize)
 {
 	Library temp;

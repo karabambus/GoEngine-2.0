@@ -4,10 +4,10 @@
 #include <charconv>
 #include <bitset>
 
-void LibraryManager::loadLibrary(std::string& _path)
+void LibraryManager::loadLibrary(std::string& loadPath)
 {
 	//load
-	std::ifstream in(_path);
+	std::ifstream in(loadPath);
 	std::string line;
 	bool isWhite = true;
 	Library library;
@@ -31,7 +31,7 @@ void LibraryManager::loadLibrary(std::string& _path)
 
 void LibraryManager::saveLibrary(std::vector<Library>& _boardLibrary)
 {
-	std::ofstream out(path);
+	std::ofstream out(savePath);
 	const int size = _boardLibrary.size();
 	int temp;
 	for (auto& i : _boardLibrary)
