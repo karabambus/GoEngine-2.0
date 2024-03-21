@@ -1,50 +1,77 @@
-#include "LibraryLoader.h"
+#include "LibraryManager.h"
 #include <sstream>
 #include <iostream>
 #include <charconv>
+#include <bitset>
 
-LibraryLoader::LibraryLoader(std::string& _path)
+void LibraryManager::loadLibrary(std::string& _path)
 {
+	//load
 	std::ifstream in(_path);
 	std::string line;
 	bool isWhite = true;
 	Library library;
-
+	
 	if (!in)
 	{
 		std::cerr << "error" << std::endl;
 	}
-
-	int i = 0;
-	while (std::getline(in, line))
+	//parser
+	while (std::getline(in, line, '|'))
 	{
+		isWhite ? library.whiteStones = std::strtol(line.c_str(), nullptr, 2) 
+				: library.blackStones = std::strtol(line.c_str(), nullptr, 2);
 		
-		if (i == 13)
-		{
-			isWhite = !isWhite;
-		}
-		else
-		{
-			parseLibrary(library, line, isWhite);
-			boardLibrary.push_back(library);
-		}
-		i++;
+		if (!isWhite) boardLibrary.push_back(library);
+		
+		isWhite = !isWhite;
 	}
 	in.close();
 }
 
-LibraryLoader::~LibraryLoader()
+void LibraryManager::saveLibrary(std::vector<Library>& _boardLibrary)
 {
-}
-//not working
-void LibraryLoader::parseLibrary(Library& library, std::string& line, bool isWhite)
-{
-	//std::stringstream ss(line);
-	std::string temp;
-	isWhite ? library.whiteStones = std::strtol(temp.c_str(), nullptr, 2) : library.blackStones = std::strtol(temp.c_str(), nullptr, 2);
+	std::ofstream out(path);
+	const int size = _boardLibrary.size();
+	int temp;
+	for (auto& i : _boardLibrary)
+	{
+		temp = i.whiteStones;
+		for (size_t j = 0; j < size; j++)
+		{
+			if ((temp & 1) == 0)
+			{
+				out << '0';
+			}
+			else
+			{
+				out << '1';
+			}
+			temp = temp >> 1;
+		}
+		temp = i.blackStones;
+		out << '|';
+		for (size_t j = 0; j < size; j++)
+		{
+			if ((temp & 1) == 0)
+			{
+				out << '0';
+			}
+			else
+			{
+				out << '1';
+			}
+			temp = temp >> 1;
+		}
+		out << '|' << std::endl;
+	}
 }
 
-std::vector<Library> LibraryLoader::getBoardLibrary()
+LibraryManager::~LibraryManager()
+{
+}
+
+std::vector<Library> LibraryManager::getBoardLibrary()
 {
 	return boardLibrary;
 }

@@ -11,21 +11,23 @@ int main()
 	HumanPlayer player2;
 	player2.changeColor();
 	std::string path = "testBoard.txt";
-	LibraryLoader ll(path);
+	LibraryManager ll(path);
 	std::vector<Library> l = ll.getBoardLibrary();
 	/*for (auto& i : l)
 	{
 		std::cout << i.blackStones << std::endl;
 	}*/
-	/*board.setLibrary(l);
-	board.updateLiberties();*/
-
-	for (size_t i = 0; i < ll.getBoardLibrary().size(); i++)
+	board.setLibrary(l);
+	board.updateLiberties();
+	board.updateBoard();
+	/*for (size_t i = 0; i < ll.getBoardLibrary().size(); i++)
 	{
-		std::cout << ll.getBoardLibrary()[i].blackStones << std::endl;
-	}
+		std::cout << l[i].blackStones << std::endl;
+	}*/
 
 	std::cout << board.printBoard() << std::endl;
+
+	
 	
 	/*while (true)
 	{

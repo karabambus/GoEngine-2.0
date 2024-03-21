@@ -139,7 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
-    <ClInclude Include="LibraryLoader.h" />
+    <ClInclude Include="LibraryManager.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandHistory.h" />
     <ClInclude Include="CurrentPlayer.h" />

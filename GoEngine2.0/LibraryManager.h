@@ -2,12 +2,12 @@
 #include "Library.h"
 #include <fstream>
 #include <vector>
-class LibraryLoader
+class LibraryManager
 {
 public:
-	LibraryLoader(std::string& _path);
-	~LibraryLoader();
-	void parseLibrary(Library& library, std::string& line, bool isWhite);
+	void loadLibrary(std::string& _path);
+	void saveLibrary(std::vector<Library>& _boardLibrary);
+	~LibraryManager();
 	std::vector<Library> getBoardLibrary();
 
 private:
