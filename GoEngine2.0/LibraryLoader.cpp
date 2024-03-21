@@ -41,7 +41,7 @@ void LibraryLoader::parseLibrary(Library& library, std::string& line, bool isWhi
 {
 	//std::stringstream ss(line);
 	std::string temp;
-	isWhite ? library.whiteStones = std::from_chars(temp, nullptr, 2) : library.blackStones = std::from_chars(temp, nullptr, 2);
+	isWhite ? library.whiteStones = std::strtol(temp.c_str(), nullptr, 2) : library.blackStones = std::strtol(temp.c_str(), nullptr, 2);
 }
 
 std::vector<Library> LibraryLoader::getBoardLibrary()
