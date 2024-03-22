@@ -1,11 +1,17 @@
 #include "Board.h"
 #include "CurrentPlayer.h"
 //TODO: optimize vectors
+Board::Board()
+{
+}
+
 Board::Board(int _boardSize)
 {
 	Library temp;
-	boardSize = _boardSize;
-	for (size_t i = 0; i < _boardSize; i++)
+	/*temp.whiteStones = 1;
+	temp.blackStones = 1;*/
+	boardSize = _boardSize + 2;
+	for (size_t i = 0; i < boardSize; i++)
 	{
 		library.push_back(temp);
 	}
@@ -14,6 +20,22 @@ Board::Board(int _boardSize)
 
 Board::~Board()
 {
+}
+
+void Board::initBoard()
+{
+	Library temp;
+	//temp.whiteStones = pow(2, boardSize);
+	for (size_t i = 0; i < boardSize; i++)
+	{
+		library.push_back(temp);
+	}
+	clearBoard();
+}
+
+void Board::setSize(int _boardSize)
+{
+	boardSize = _boardSize;
 }
 
 void Board::clearBoard()
@@ -28,8 +50,23 @@ void Board::clearBoard()
 
 void Board::updateLiberties()
 {
-	for (auto& i : library)
+	int temp = pow(2, boardSize + 1);
+	temp = temp + 1;
+
+	int temp2 = pow(2, boardSize + 2);
+	temp2--;
+	/*for (auto& i : library)
+	{
 		i.liberties = i.blackStones | i.whiteStones;
+		i.liberties |= temp;
+	}*/
+	library[0].liberties = temp2;
+	for (size_t i = 1; i < boardSize - 2; i++)
+	{
+		library[i].liberties = library[i].blackStones | library[i].whiteStones;
+		library[i].liberties |= temp;
+	}
+	library[boardSize-1].liberties = temp2;
 }
 
 bool Board::updateBoard()
@@ -156,10 +193,17 @@ void Board::setLibrary(std::vector<Library>& _library)
 
 bool Board::setStone(std::pair<int, int>& position, HumanPlayer player)
 {
-	position.first = pow(2, position.first);
-	lastMove = position;
-	player.isWhite() ? library[position.second].whiteStones |= position.first : library[position.second].blackStones |= position.first;
-	return true;
+	if (((position.first < boardSize - 2)) && ((position.second < boardSize - 2) && (position.second >= 1)))
+	{
+		position.first = pow(2, position.first - 1);
+		//position.second++;
+		lastMove = position;
+		player.isWhite() ? library[position.second].whiteStones |= (position.first << 1) : library[position.second].blackStones |= (position.first << 1);
+		//lastMove.first = lastMove.first << 1;
+		return true;
+	}
+	
+	return false;
 }
 
 std::string Board::printBoard()

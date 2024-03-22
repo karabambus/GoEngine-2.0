@@ -10,27 +10,10 @@ int main()
 	HumanPlayer player;
 	HumanPlayer player2;
 	player2.changeColor();
-	std::string path = "testBoard.txt";
-	LibraryManager lm;
-	lm.loadLibrary(path);
-	std::vector<Library> l = lm.getBoardLibrary();
-	/*for (auto& i : l)
-	{
-		std::cout << i.blackStones << std::endl;
-	}*/
-	board.setLibrary(l);
-	board.updateLiberties();
-	board.updateBoard();
-	/*for (size_t i = 0; i < ll.getBoardLibrary().size(); i++)
-	{
-		std::cout << l[i].blackStones << std::endl;
-	}*/
-
-	std::cout << board.printBoard() << std::endl;
 
 	
 	
-	/*while (true)
+	while (true)
 	{
 		int row;
 		std::cout << "Enter column: ";
@@ -62,7 +45,7 @@ int main()
 		moveP2.execute(board);
 		std::cout << board.printBoard() << std::endl;
 		CurrentPlayer::getCurrentPlayer().flipTracker();
-	}*/
+	}
 
 
 }

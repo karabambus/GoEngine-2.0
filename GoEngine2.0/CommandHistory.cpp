@@ -1,5 +1,5 @@
 #include "CommandHistory.h"
-//TODO: 
+
 CommandHistory& CommandHistory::getCommandHistory()
 {
 	static CommandHistory* commandHistory = new CommandHistory;
@@ -14,6 +14,7 @@ Board CommandHistory::getPrevBoard()
 		board.updateBoard();
 	}
 	prevIterator();
+	return board;
 }
 
 bool CommandHistory::empty()
@@ -21,9 +22,19 @@ bool CommandHistory::empty()
 	return positionHistory.empty();
 }
 
+void CommandHistory::addToList(std::pair<std::pair<int, int>, HumanPlayer> moveInfo)
+{
+	positionHistory.push_back(moveInfo);
+}
+
 void CommandHistory::updateIterator()
 {
 	end = positionHistory.end();
+}
+
+CommandHistory::CommandHistory()
+{
+	
 }
 
 void CommandHistory::prevIterator()

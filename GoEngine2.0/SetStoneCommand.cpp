@@ -15,7 +15,7 @@ bool SetStoneCommand::execute(Board& board)
 	return false;
 }
 
-bool SetStoneCommand::undo()
+bool SetStoneCommand::undo(Board& board)
 {
 	return false;
 }

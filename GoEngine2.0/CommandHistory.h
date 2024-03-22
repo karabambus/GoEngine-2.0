@@ -12,6 +12,7 @@ public:
 	static CommandHistory& getCommandHistory();
 	Board getPrevBoard();
 	bool empty();
+	void addToList(std::pair<std::pair<int, int>, HumanPlayer> moveInfo);
 private:
 	CommandHistory();
 	void prevIterator();
