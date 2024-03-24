@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Board.cpp">
@@ -39,7 +39,10 @@
     <ClCompile Include="SetStoneCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LibraryLoader.cpp">
+    <ClCompile Include="CommandHistory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LibraryManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,7 +77,7 @@
     <ClInclude Include="SetStoneCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LibraryLoader.h">
+    <ClInclude Include="LibraryManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

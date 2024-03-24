@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{7af43d71-6da3-475a-b6b6-dd4500e1a4e8}</ProjectGuid>
-    <RootNamespace>GoEngine20</RootNamespace>
+    <ProjectGuid>{9bd250c1-7917-4852-bff8-beb542fa0735}</ProjectGuid>
+    <RootNamespace>BoardDataStructure</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,32 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Board.cpp" />
-    <ClCompile Include="CommandHistory.cpp" />
-    <ClCompile Include="LibraryManager.cpp" />
-    <ClCompile Include="CurrentPlayer.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="HumanPlayer.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="MoveCommand.cpp" />
-    <ClCompile Include="SetCommand.cpp" />
-    <ClCompile Include="SetStoneCommand.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Board.h" />
-    <ClInclude Include="LibraryManager.h" />
-    <ClInclude Include="Command.h" />
-    <ClInclude Include="CommandHistory.h" />
-    <ClInclude Include="CurrentPlayer.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="HumanPlayer.h" />
-    <ClInclude Include="Library.h" />
-    <ClInclude Include="MoveCommand.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="SetStoneCommand.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="testBoard.txt" />
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

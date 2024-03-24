@@ -72,7 +72,7 @@ void Board::updateLiberties()
 bool Board::updateBoard()
 {
 	updateLiberties();
-	//prepare vectors
+	//prepare vectors TODO: make class variables
 	std::vector<unsigned int> noLibertiesGroup;
 	std::vector<unsigned int> libertiesGroup;
 	std::vector<unsigned int> suicideCheckGroup;
