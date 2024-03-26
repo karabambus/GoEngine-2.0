@@ -133,14 +133,20 @@ ulli Board::hasAllNeighbours(Node* node)
 	modifiedRow &= (node->data.liberties >> 1);
 
 	//vertical check
+	//0001 0000 0000 0000 0000 0001 0000 0000 0000 0000 0001 0000 0000 0000 0000 0001
+	//														 0000 0000 0000 0000 0001
 	if (node->next != NULL)
-		modifiedRow &= ((node->next->data.liberties << 41) >> 41);
-
-	modifiedRow &= (node->data.liberties << 21);
-	modifiedRow &= (node->data.liberties >> 21);
-	
+		modifiedRow &= ((node->next->data.liberties << 43) >> 43);
+	//0001 0000 0000 0000 0000 0001 0000 0000 0000 0000 0001 0000 0000 0000 0000 0001
+	//0001 0000 0000 0000 0000 0001 0000 0000 0000 0000 0001
+	modifiedRow &= (node->data.liberties << 20);
+	//0001 0000 0000 0000 0000 0001 0000 0000 0000 0000 0001 0000 0000 0000 0000 0001
+	//                         0001 0000 0000 0000 0000 0001 0000 0000 0000 0000 0001 						   						   	  				   
+	modifiedRow &= (node->data.liberties >> 20);
+	//0001 0000 0000 0000 0000 0001 0000 0000 0000 0000 0001 0000 0000 0000 0000 0001
+	//0000 0000 0000 0000 0001
 	if (node->prev != NULL)
-		modifiedRow &= (node->prev->data.liberties >> 41);
+		modifiedRow &= (node->prev->data.liberties >> 40);
 
 	return modifiedRow;
 }

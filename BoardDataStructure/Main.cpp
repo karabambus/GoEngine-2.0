@@ -18,8 +18,8 @@ void loadLibrary(std::string& loadPath)
 	{
 		std::cerr << "error" << std::endl;
 	}
+
 	//parser
-	
 	while (std::getline(in, line, '|'))
 	{
 		int tempW;
@@ -35,22 +35,18 @@ void loadLibrary(std::string& loadPath)
 	
 	for (size_t i = 0; i < vBoard.size(); i++)
 	{
-			ulli temp = vBoard[i].first;
-			temp |= vBoard[i + 1].first << 21;
-			temp |= vBoard[i + 2].first << 20;
+			ulli tempW = vBoard[i].first << 40;
+			temp |= vBoard[i + 1].first << 20;
+			temp |= vBoard[i + 2].first;
+
+			ulli tempB = vBoard[i].second << 40;
+			temp |= vBoard[i + 1].second << 20;
+			temp |= vBoard[i + 2].second;
+
+			vBoard[i] = { tempW, tempB };
 	
 	}
 
-	while (std::getline(in, line, '|'))
-	{
-		isWhite ? library.whiteStones = std::strtol(line.c_str(), nullptr, 2)
-			: library.blackStones = std::strtol(line.c_str(), nullptr, 2);
-
-		if (!isWhite) library.push_back(library);
-
-		isWhite = !isWhite;
-	}
-	in.close();
 }
 
 int main()
