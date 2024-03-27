@@ -82,8 +82,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="testBoard.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
+    <Text Include="testBoard.txt" />
   </ItemGroup>
 </Project>

@@ -129,9 +129,15 @@
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Node.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\GoEngine2.0\testBoard.txt" />
+    <Text Include="testboard2.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Board.h" />
+    <ClInclude Include="Node.h" />
+    <ClInclude Include="RowLibrary.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

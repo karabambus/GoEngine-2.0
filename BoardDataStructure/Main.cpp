@@ -1,12 +1,14 @@
-#include "Board.cpp"
-#include <sstream>
-#include<fstream>
+#pragma once
+#include "Board.h"
 #include<vector>
 #include <utility>
 #include <algorithm>
+#include <fstream>
+#include <string>
+#include <iostream>
 
 //test bench code
-void loadLibrary(std::string& loadPath)
+void loadLibrary(Board &newBoard, std::string loadPath)
 {
 	//load
 	std::ifstream in(loadPath);
@@ -33,27 +35,36 @@ void loadLibrary(std::string& loadPath)
 	}
 
 	
-	for (size_t i = 0; i < vBoard.size(); i++)
+	for (size_t i = 0; i < vBoard.size() - 3; i += 3)
 	{
-			ulli tempW = vBoard[i].first << 40;
-			temp |= vBoard[i + 1].first << 20;
-			temp |= vBoard[i + 2].first;
+			RowLibrary row;
 
-			ulli tempB = vBoard[i].second << 40;
-			temp |= vBoard[i + 1].second << 20;
-			temp |= vBoard[i + 2].second;
+			ulli tempW = vBoard[i].first;
+			tempW <<= 21;
+			tempW |= vBoard[i + 1].first;
+			tempW <<= 20;
+			tempW |= vBoard[i + 2].first;
 
-			vBoard[i] = { tempW, tempB };
-	
+			ulli tempB = vBoard[i].second;
+			tempB <<= 21;
+			tempB |= vBoard[i + 1].second;
+			tempB <<= 20;
+			tempB |= vBoard[i + 2].second;
+
+			row.whiteStones = tempW;
+			row.blackStones = tempB;
+			
+			newBoard.insertFront(row);
 	}
-
 }
 
 int main()
 {
 	//test becnch code
 	Board b;
-	ulli test = b.hasAllNeighbours(b.begin());
+
+	loadLibrary(b, "testboard2.txt");
+	b.updateLiberties();
 	b.displayBoard();
 
 	

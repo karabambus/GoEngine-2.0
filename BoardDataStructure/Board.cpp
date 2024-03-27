@@ -1,76 +1,8 @@
+#pragma once
 #include <sstream>
 #include <iostream>
-
-#define ulli unsigned long long int 
-
-struct RowLibrary
-{
-    ulli whiteStones = 0;
-    ulli blackStones = 0;
-    ulli liberties = 0x1000010000100001;
-};
-
-class Node {
-public:
-    RowLibrary data;
-    Node* next;
-    Node* prev;
-
-	Node()
-	{
-		data.whiteStones = 0;
-		data.blackStones = 0;
-		data.liberties = 0x1000010000100001;
-		next = NULL;
-		prev = NULL;
-	};
-
-	std::string toString()
-	{
-		std::stringstream ss;
-
-		for (size_t i = 0; data.liberties; i++)
-		{
-			switch (i)
-			{
-			case 0:
-				break;
-			case  20:
-				ss << std::endl;
-				break;
-			case 40:
-				ss << std::endl;
-				break;
-			case 60:
-				ss << std::endl;
-				break;
-			default:
-				if ((data.liberties & 1) == 1)
-					data.whiteStones & 1 ? ss << "W " : ss << "B ";
-				else
-					ss << "0 ";
-				break;
-			}
-			data.liberties >>= 1;
-		}
-
-		return ss.str();
-	}
-};
-
-class Board
-{
-public:
-	Board();
-	~Board();
-	void insertFront(RowLibrary new_data);
-	void displayBoard();
-	ulli hasAllNeighbours(Node* node);
-	Node* begin();
-private:
-	Node* head;
-	Node* tail;
-};
+#include <fstream>
+#include "Board.h"
 
 Board::Board()
 {
@@ -90,6 +22,8 @@ Board::~Board()
 		
 	}
 }
+
+
 
 
 void Board::insertFront(RowLibrary new_data)
@@ -154,5 +88,15 @@ ulli Board::hasAllNeighbours(Node* node)
 Node* Board::begin()
 {
 	return head;
+}
+
+void Board::updateLiberties()
+{
+	Node* last;
+	last = head;
+	while (last != NULL) {
+		last->data.liberties = (last->data.whiteStones | last->data.blackStones) | 0x1000010000100001;
+		last = last->next;
+	}
 }
 
